@@ -1,3 +1,7 @@
+.idea/
+venv/
+__pycache__/
+token.txt
+geckodriver.log
 *.swp
 *.pyc
-__pychache__

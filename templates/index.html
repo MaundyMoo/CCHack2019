@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Bindicator</title>
+	</head>
+	<body>
+		<div class="form-div">
+			<p>This is a test</p>
+			<form action='/address' method='post'>
+				Postcode:<br>
+				<input type='text' name='postcode'><br>
+				<input type='submit' name='submit'>
+			</form>
+		</div>
+		<div class="data-div">
+			<ul id="data-list">
+			</ul>
+		</div>
+		<table border = 1>
+		<tr>
+			<th> Day </th>
+			<th> Date </th>
+			<th> Bin type </th> 
+		</tr>
+	        {% for each in data %}
+           	<tr>
+               		<td> {{ each[0] }} </td>
+			<td> {{ each[1] + ', ' + month }} </td>
+			<td> {{ each[2] }} </td>
+        	</tr>
+	        {% endfor %}
+      </table>
+	</body>
+</html>

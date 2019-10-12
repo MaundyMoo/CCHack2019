@@ -11,7 +11,8 @@ from selenium.common.exceptions import TimeoutException
 def parse_address(address):
 
     url = "https://www.southampton.gov.uk/bins-recycling/bins/"
-    driver = webdriver.Firefox(executable_path=r'C:\Program Files\Geckodriver\geckodriver.exe')
+    #driver = webdriver.Firefox(executable_path=r'C:\Program Files\Geckodriver\geckodriver.exe')
+    driver = webdriver.Firefox()
     driver.get(url)
     input_box = driver.find_element_by_id("addresssearchbox")
     input_box.send_keys(address)
@@ -49,10 +50,8 @@ def parse_address(address):
             toAdd.append(re.findall(">.*?</", str(types[i]))[0][1:-2])
             data.append(toAdd)
     driver.close()
-    print(data)
     return data
 
 def parse_data(data):
     data = [ele for ele in data if ele[1] > datetime.now().strftime("%d")]
-    print(data)
     return data

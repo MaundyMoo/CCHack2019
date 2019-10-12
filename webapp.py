@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from datetime import datetime 
+import webparser
 
 app = Flask(__name__)
 
@@ -12,8 +13,8 @@ def address():
 	postcode = request.form['postcode']
 	print(postcode)
 	# TODO input data into scraper methods and return data
-	data = [['Tuesday', '01', 'General'], ['Tuesday', '08', 'General'], ['Thursday', '10', 'Recycling'], ['Thursday', '10', 'Glass'], ['Tuesday', '15', 'General'], ['Tuesday', '22', 'General'], ['Thursday', '24', 'Recycling'], ['Thursday', '24', 'Glass'], ['Tuesday', '29', 'General']]
-
+	data = webparser.parse_address(postcode)
+	data = webparser.parse_data(data)
 	return render_template("index.html", data=data, month=datetime.now().strftime('%b'))
 
 if __name__ == '__main__':
